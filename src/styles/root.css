@@ -1,0 +1,17 @@
+.app {
+  /* Sizing */
+  height: 100%;
+  width: 100%;
+  /* Prevent horizontal scroll */
+  overflow-x: hidden;
+  /* Background */
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("../assets/img/home_bg.jpg");
+  background-size: cover;
+}
+
+.page {
+  /* Sizing */
+  height: 100vh;
+  width: 100vw;
+}

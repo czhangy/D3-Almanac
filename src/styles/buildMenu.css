@@ -1,0 +1,61 @@
+.build-menu {
+  /* Variables */
+  --navbar-height: 80px;
+  /* Sizing */
+  width: 33%;
+  height: calc(100% - var(--navbar-height));
+  /* Flexbox */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.gear-display {
+  /* Sizing */
+  width: 60%;
+  /* Spacing */
+  margin: 2rem 0;
+}
+
+.skill-display {
+  /* Sizing */
+  width: 100%;
+  /* Flexbox */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.passive-display {
+  /* Sizing */
+  width: 100%;
+  /* Flexbox */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cube-display {
+  /* Sizing */
+  width: 100%;
+  /* Flexbox */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.square {
+  height: 3rem;
+  width: 3rem;
+  background-color: green;
+  margin: 1rem;
+}
+
+.circle {
+  height: 3rem;
+  width: 3rem;
+  background-color: green;
+  margin: 1rem;
+  border-radius: 100%;
+}

@@ -1,0 +1,87 @@
+.large-width {
+  /* Sizing */
+  width: 100%;
+}
+
+.selection-menu {
+  /* Variables */
+  --navbar-height: 80px;
+  /* Sizing */
+  width: 33%;
+  height: calc(100% - var(--navbar-height));
+  /* Flexbox */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.selection-menu-title {
+  /* Typography */
+  color: white;
+  font-size: 2rem;
+  /* Sizing */
+  width: 100%;
+  /* Flexbox */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Borders */
+  border-top: 2px solid lightgrey;
+  /* Background */
+  background-color: rgba(255, 255, 255, 0);
+  /* Transition */
+  transition: background-color 0.2s ease;
+}
+
+.selection-menu-button {
+  /* Clickable */
+  cursor: pointer;
+  /* Sizing */
+  width: 100%;
+  height: 100%;
+  /* Typography */
+  font-family: "Girassol", cursive, sans-serif;
+  line-height: 3rem;
+  /* Spacing */
+  margin: 1rem 2rem;
+}
+
+@media (hover: hover) {
+  .selection-menu-title:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+}
+
+.selection-menu-body {
+  /* Sizing */
+  height: 100%;
+  width: 100%;
+  /* Spacing */
+  padding:2rem;
+  background-color: rgb(14, 53, 58);
+  border-top: 2px solid lightgrey;
+}
+
+.accordion-body-row {
+  /* Sizing */
+  height: 100%;
+  width: 100%;
+  /* Flexbox */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* Spacing */
+  margin: 2rem 0;
+}
+
+.accordion-body-row-header {
+  /* Typography */
+  font-family: "Girassol", cursive, sans-serif;
+  color: white;
+  font-size: 1.5rem;
+  /* Spacing */
+  margin-right: 2rem;
+  /* Sizing */
+  width: 30%;
+}

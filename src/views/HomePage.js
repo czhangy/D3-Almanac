@@ -1,44 +1,37 @@
 // Boilerplate
 import React, { Component } from "react";
+import axios from "axios";
 // Styling
 import "../styles/homepage.css";
 // Import custom components
-import ClassDropdown from "../components/ClassDropdown.js";
-// Import images
-import Barb from "../assets/img/crests/barbarian_crest.png";
+import StatsMenu from "../components/StatsMenu.js";
+import SelectionMenu from "../components/SelectionMenu.js";
+import BuildMenu from '../components/BuildMenu.js'
 
 export default class HomePage extends Component {
-  renderSkills() {
-    var skills = [];
-    for (var i = 0; i < 6; i++) skills.push(<div className="square" key={i} />);
-    return <div className="skill-selection">{skills}</div>;
+  constructor(props) {
+    super(props);
+    this.state = {
+      class: null,
+    };
+    this.handleClassChange = this.handleClassChange.bind(this);
+    this.getData = this.getData.bind(this);
   }
-  renderPassives() {
-    var passives = [];
-    for (var i = 0; i < 4; i++) passives.push(<div className="circle" key={i} />);
-    return <div className="passive-selection">{passives}</div>;
+  handleClassChange(selection) {
+    this.setState({ class: selection });
   }
-  renderCube() {
-    var cube = [];
-    for (var i = 0; i < 3; i++) cube.push(<div className="circle" key={i} />);
-    return <div className="cube-selection">{cube}</div>;
+  getData() {
+    console.log("press");
+    axios
+      .get(`http://localhost:5000/classes/${this.state.class}`)
+      .then((res) => console.log(res.data));
   }
   render() {
     return (
       <div className="page home-page">
-        <div className="gear-and-skills">
-          <div className="gear-selection"></div>
-          {this.renderSkills()}
-          {this.renderPassives()}
-          {this.renderCube()}
-        </div>
-        <div className="class-and-stats">
-          <div className="class-selection">
-            <img src={Barb} alt="" className="class-crest" />
-            <ClassDropdown />
-          </div>
-          <div className="stats"></div>
-        </div>
+        <StatsMenu class={this.state.class} onChange={this.handleClassChange} />
+        <SelectionMenu class={this.state.class} />
+        <BuildMenu class={this.state.class} />
       </div>
     );
   }

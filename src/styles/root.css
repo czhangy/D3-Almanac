@@ -5,13 +5,19 @@
   /* Prevent horizontal scroll */
   overflow-x: hidden;
   /* Background */
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+  background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)),
     url("../assets/img/home_bg.jpg");
   background-size: cover;
+  background-position: center;
 }
 
 .page {
   /* Sizing */
   height: 100vh;
   width: 100vw;
+}
+
+.body {
+  /* Typography */
+  font-family: "Girassol", cursive, sans-serif;
 }

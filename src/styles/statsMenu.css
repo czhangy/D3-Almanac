@@ -1,0 +1,27 @@
+.stats-menu {
+  /* Variables */
+  --navbar-height: 80px;
+  /* Sizing */
+  width: 33%;
+  height: calc(100% - var(--navbar-height));
+  /* Flexbox */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.class-selection {
+  /* Sizing */
+  height: 40%;
+  width: 50%;
+  /* Flexbox */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.class-crest {
+  height: 80%;
+}

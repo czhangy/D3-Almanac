@@ -21,10 +21,8 @@ export default class Dropdown extends Component {
     this.handleSelect = this.handleSelect.bind(this);
   }
   handleSelect(e) {
-    if (this.props.label) this.props.onChange(e.key, this.props.label);
-    else this.props.onChange(e.key);
+    this.props.onChange(e.key, this.props.label);
   }
-  formatString(string) {}
   render() {
     const key = this.props.value ? this.props.value.toLowerCase() : null;
     const value = this.props.value

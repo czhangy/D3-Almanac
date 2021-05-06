@@ -18,6 +18,10 @@ import DefaultCrest from "../assets/img/crests/default.png";
 export default class StatsMenu extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      class: null,
+    }
+    // Dropdown contents
     this.classes = [
       {
         key: "barbarian",
@@ -55,6 +59,7 @@ export default class StatsMenu extends Component {
         value: "Wizard",
       },
     ];
+    // Map keys to crests
     this.crests = {
       barbarian: BarbCrest,
       crusader: CrusCrest,
@@ -64,8 +69,10 @@ export default class StatsMenu extends Component {
       "witch-doctor": WDCrest,
       wizard: WizCrest,
     };
+    // Binding
     this.handleSelect = this.handleSelect.bind(this);
   }
+  // Conditional rendering
   renderCrest() {
     if (this.props.class)
       return (
@@ -77,7 +84,9 @@ export default class StatsMenu extends Component {
       );
     else return <img src={DefaultCrest} alt="" className="class-crest" />;
   }
+  // Handle dropdown state and emit
   handleSelect(selection) {
+    this.setState({class: selection});
     this.props.onChange(selection);
   }
   render() {
@@ -85,7 +94,12 @@ export default class StatsMenu extends Component {
       <div className="stats-menu">
         <div className="class-selection">
           {this.renderCrest()}
-          <Dropdown onChange={this.handleSelect} options={this.classes} isSearchable={false} />
+          <Dropdown
+            onChange={this.handleSelect}
+            options={this.classes}
+            isSearchable={false}
+            value={this.state.class}
+          />
         </div>
         <div className="stats"></div>
       </div>

@@ -14,6 +14,7 @@ export default class AccordionBody extends Component {
       slotUnlocked: false,
       skillUnlocked: false,
       skillType: null,
+      values: [null, null, null],
     };
     this.itemCategories = [
       {
@@ -78,8 +79,8 @@ export default class AccordionBody extends Component {
       },
       {
         key: "off-hand",
-        label: "Off-Hand",
-        value: "Off-Hand",
+        label: "Off Hand",
+        value: "Off Hand",
       },
     ];
     this.locked = ["Item", "Slot", "Skill"];
@@ -95,7 +96,6 @@ export default class AccordionBody extends Component {
   renderRows() {
     let rows = [];
     for (let i = 0; i < this.props.headers.length; i++) {
-      console.log("render");
       rows.push(
         <div className="accordion-body-row" key={i}>
           <div className="accordion-body-row-header">
@@ -111,6 +111,7 @@ export default class AccordionBody extends Component {
               (this.props.headers[i] === "Skill" && !this.state.skillUnlocked)
             }
             label={this.props.headers[i]}
+            value={this.state.values[i]}
           />
         </div>
       );
@@ -127,12 +128,12 @@ export default class AccordionBody extends Component {
       ];
     } else if (this.props.headers[index] === "Slot") {
       var count = [
-        { key: "one", label: "1", value: "1" },
-        { key: "two", label: "2", value: "2" },
-        { key: "three", label: "3", value: "3" },
-        { key: "four", label: "4", value: "4" },
-        { key: "five", label: "5", value: "5" },
-        { key: "six", label: "6", value: "6" },
+        { key: "1", label: "1", value: "1" },
+        { key: "2", label: "2", value: "2" },
+        { key: "3", label: "3", value: "3" },
+        { key: "4", label: "4", value: "4" },
+        { key: "5", label: "5", value: "5" },
+        { key: "6", label: "6", value: "6" },
       ];
       if (this.state.skillType === "passive") {
         count.splice(4, 2);
@@ -144,11 +145,58 @@ export default class AccordionBody extends Component {
     }
   }
   handleSelect(selection, label) {
-    if (label === "Category") this.setState({ itemUnlocked: true });
-    else if (label === "Type") {
+    if (label === "Category") {
+      // Unlock Item
+      this.setState({ itemUnlocked: true });
+      // Reset other fields
+      let newArr = this.state.values.slice();
+      newArr[0] = selection;
+      newArr[1] = null;
+      this.setState({ values: newArr });
+    } else if (label === "Item") {
+      // Set display
+      let newArr = this.state.values.slice();
+      newArr[1] = selection;
+      this.setState({ values: newArr });
+    } else if (label === "Type") {
+      // Unlock Slot
       this.setState({ slotUnlocked: true });
+      // Set skill type
       this.setState({ skillType: selection });
-    } else if (label === "Slot") this.setState({ skillUnlocked: true });
+      // Reset other fields
+      let newArr = this.state.values.slice();
+      newArr[0] = selection;
+      newArr[1] = null;
+      newArr[2] = null;
+      this.setState({ values: newArr });
+    } else if (label === "Slot") {
+      // Set display
+      let newArr = this.state.values.slice();
+      newArr[1] = selection;
+      this.setState({ values: newArr });
+      // Unlock Skill
+      this.setState({ skillUnlocked: true });
+    } else if (label === "Skill") {
+      // Set display
+      let newArr = this.state.values.slice();
+      newArr[2] = selection;
+      this.setState({ values: newArr });
+    } else if (label === "Weapon Slot") {
+      // Set display
+      let newArr = this.state.values.slice();
+      newArr[0] = selection;
+      this.setState({ values: newArr });
+    } else if (label === "Armor Slot") {
+      // Set display
+      let newArr = this.state.values.slice();
+      newArr[1] = selection;
+      this.setState({ values: newArr });
+    } else if (label === "Jewelry Slot") {
+      // Set display
+      let newArr = this.state.values.slice();
+      newArr[2] = selection;
+      this.setState({ values: newArr });
+    }
   }
   render() {
     return this.renderRows();

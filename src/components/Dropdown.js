@@ -24,32 +24,33 @@ export default class Dropdown extends Component {
     if (this.props.label) this.props.onChange(e.key, this.props.label);
     else this.props.onChange(e.key);
   }
+  formatString(string) {}
   render() {
-    if (!this.props.clear)
-      return (
-        <div>
-          <Select
-            options={this.props.options}
-            styles={styles}
-            isSearchable={this.props.isSearchable}
-            isDisabled={this.props.isDisabled}
-            onChange={this.handleSelect}
-          />
-        </div>
-      );
-    else
-      return (
-        <div>
-          <Select
-            options={this.props.options}
-            styles={styles}
-            isSearchable={this.props.isSearchable}
-            isDisabled={this.props.isDisabled}
-            onChange={this.handleSelect}
-            value={null}
-          />
-        </div>
-      );
+    const key = this.props.value ? this.props.value.toLowerCase() : null;
+    const value = this.props.value
+      ? this.props.value
+          .split("-")
+          .map(function capitalize(part) {
+            return part.charAt(0).toUpperCase() + part.slice(1);
+          })
+          .join(" ")
+      : null;
+    return (
+      <div>
+        <Select
+          options={this.props.options}
+          styles={styles}
+          isSearchable={this.props.isSearchable}
+          isDisabled={this.props.isDisabled}
+          onChange={this.handleSelect}
+          value={{
+            key: key,
+            label: value,
+            value: value,
+          }}
+        />
+      </div>
+    );
   }
 }
 
@@ -59,5 +60,5 @@ Dropdown.propTypes = {
   isSearchable: PropTypes.bool,
   isDisabled: PropTypes.bool,
   label: PropTypes.string,
-  clear: PropTypes.bool,
+  value: PropTypes.any,
 };

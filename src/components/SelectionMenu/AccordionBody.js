@@ -1,6 +1,7 @@
 // Boilerplate
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import axios from "axios";
 // Styling
 import "../../styles/selectionMenu.css";
 // Import custom components
@@ -133,7 +134,7 @@ export default class AccordionBody extends Component {
     return <div>{rows}</div>;
   }
   // Get the contents of each dropdown by label
-  getContents(index) {
+  async getContents(index) {
     if (this.props.headers[index] === "Category") return this.itemCategories;
     else if (this.props.headers[index] === "Type") return this.skillTypes;
     else if (this.props.headers[index] === "Slot") {
@@ -141,6 +142,11 @@ export default class AccordionBody extends Component {
       // Trim contents for passive slots
       if (this.state.values[0] === "passive") count.splice(4, 2);
       return count;
+    } else if (this.props.headers[index] === "Skill") {
+      let skills = await axios
+        .get(`http://localhost:5000/classes/${this.props.class}`)
+        .then((res) => res.data.skills.active);
+      return skills.data;
     } else return [];
   }
   // Set states and emit value
@@ -192,4 +198,5 @@ export default class AccordionBody extends Component {
 
 AccordionBody.propTypes = {
   headers: PropTypes.array,
+  class: PropTypes.any,
 };

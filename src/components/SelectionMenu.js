@@ -29,7 +29,7 @@ export default class SelectionMenu extends Component {
               <AccordionItemButton className="selection-menu-button">Gear Selection</AccordionItemButton>
             </AccordionItemHeading>
             <AccordionItemPanel className="selection-menu-body">
-              <AccordionBody headers={['Category','Item']} />
+              <AccordionBody headers={['Category','Item']} class={this.props.class}/>
             </AccordionItemPanel>
           </AccordionItem>
           <AccordionItem uuid="skills">
@@ -37,7 +37,7 @@ export default class SelectionMenu extends Component {
               <AccordionItemButton className="selection-menu-button">Skills Selection</AccordionItemButton>
             </AccordionItemHeading>
             <AccordionItemPanel className="selection-menu-body">
-            <AccordionBody headers={['Type','Slot','Skill']} />
+            <AccordionBody headers={['Type','Slot','Skill']} class={this.props.class}/>
             </AccordionItemPanel>
           </AccordionItem>
           <AccordionItem uuid="cube">
@@ -45,7 +45,7 @@ export default class SelectionMenu extends Component {
               <AccordionItemButton className="selection-menu-button">Kanai's Cube Selection</AccordionItemButton>
             </AccordionItemHeading>
             <AccordionItemPanel className="selection-menu-body">
-            <AccordionBody headers={['Weapon Slot','Armor Slot','Jewelry Slot']} />
+            <AccordionBody headers={['Weapon Slot','Armor Slot','Jewelry Slot']} class={this.props.class}/>
             </AccordionItemPanel>
           </AccordionItem>
         </Accordion>

@@ -9,8 +9,7 @@ router.route("/:class").get(async (req, res) => {
       clientId: process.env.CLIENT_ID,
       clientSecret: process.env.CLIENT_SECRET,
     });
-    console.log(req.params);
-    console.log(`/d3/data/hero/${req.params.class}`);
+    console.log("Request URL: " + `/d3/data/hero/${req.params.class}`);
     const endpoint = `/d3/data/hero/${req.params.class}`;
     const response = await api.query(endpoint);
     res.json(response);

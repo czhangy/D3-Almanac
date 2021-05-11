@@ -12,20 +12,17 @@ app.use(express.json());
 
 // MongoDB setup
 const uri = process.env.ATLAS_URI;
-mongoose.connect(uri, {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useUnifiedTopology: true,
-});
-const connection = mongoose.connection;
-connection.once("open", () => {
-  console.log("MongoDB database connection established successfully");
-});
+mongoose
+  .connect(uri, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("Database Connected"))
+  .catch((err) => console.log(err));
 
-const itemsRouter = require('./routes/items');
-const classesRouter = require('./routes/classes');
-app.use('/items', itemsRouter);
-app.use('/classes', classesRouter);
+const classesRouter = require("./routes/classes");
+app.use("/classes", classesRouter);
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
